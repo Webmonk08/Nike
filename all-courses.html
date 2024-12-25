@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - E-Education Platform</title>
+    <style>
+ :root {
+            --primary-color: #333;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        main {
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-container {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-container label {
+            font-weight: bold;
+        }
+
+        .filter-container select {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 10px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .course-card p {
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        #enrollForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #enrollForm h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        #enrollForm form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #enrollForm label {
+            margin-bottom: 0.5rem;
+        }
+
+        #enrollForm input {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        #enrollForm button {
+            margin-top: 1rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-container label {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card img {
+                height: 150px;
+            }
+
+            .course-card h3 {
+                font-size: 1.1rem;
+            }
+            .filter-container{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+
+        .form-container {
+    max-width: 600px;
+    /* margin: 5% auto; */
+    /* background: white; */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* top: 50%; */
+    position: relative;
+    color: black !important;
+}
+
+#enrollForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1 1 calc(50% - 15px);
+            min-width: 200px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #enrollForm {
+                padding: 1rem;
+            }
+
+            .form-group {
+                flex: 1 1 100%;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: black;
+}
+
+.time-slots {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.time-slot {
+    padding: 8px 16px;
+    border: 1px solid #4285f4;
+    border-radius: 4px;
+    color: #4285f4;
+    background: white;
+    cursor: pointer;
+}
+
+.time-slot:hover {
+    background: #f8f9fa;
+}
+
+.time-slot.selected {
+    background: #4285f4;
+    color: rgb(0, 0, 0);
+}
+
+.calendar {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-day {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.calendar-date {
+    padding: 5px;
+    cursor: pointer;
+    color: #030303;
+    border-radius: 4px;
+}
+
+.calendar-date:hover {
+    background: #f0f0f0;
+}
+
+.calendar-date.selected {
+    background: #4285f4;
+    color: rgb(0, 0, 0) !important;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.submit-btn {
+    /* background: #44d89f; */
+    /* background: linear-gradient(135deg,#35393a 0%,white 200%); */
+    display: inline-block;
+    padding: 2%;
+    background: linear-gradient(135deg,#35393a 0%,white 200%);
+    color: var(--bg-color);
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 17px;
+    transition: all .7s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.07); 
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>All Courses</h1>
+    </header>
+    <main>
+        <div class="filter-container" style="display: flex;">
+            <label for="category">Filter by Category:</label>
+            <select id="category" onchange="filterCourses()">
+                <option value="all">All Categories</option>
+                <option value="web">Web Development</option>
+                <option value="app">App-Development</option>
+                <option value="cyber">cyber Security</option>
+                <option value="dsa">DSA</option>
+                <option value="web3">WEB-3</option>
+                <option value="machine">Machine Learning</option>
+                <option value="c++">C++</option>
+                <option value="py">python</option>
+                <option value="c">C</option>
+                <option value="full">FullStack</option>
+
+            </select>
+        </div>
+        <div class="course-grid" id="courseGrid">
+            <div class="course-card" data-category="web" data-level="beginner">
+                <img src="./images/web.png" alt="Web Development">
+                <h3>Web Development Fundamentals</h3>
+                <p>Learn the basics of HTML, CSS, and JavaScript.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Web Development Fundamentals')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="machine" data-level="intermediate">
+                <img src="./images/MachineLearning.jpg" alt="Data Science">
+                <h3>Data Science and Machine Learning</h3>
+                <p>Master data analysis and machine learning techniques.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Data Science and Machine Learning')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="cyber" data-level="beginner">
+                <img src="./images/Cyber.jpg" alt="Digital Marketing">
+                <h3>Digital Marketing Essentials</h3>
+                <p>Learn to create and execute effective marketing strategies.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Digital Marketing Essentials')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="dsa" data-level="intermediate">
+                <img src="./images/WhatsApp Image 2024-12-15 at 10.34.07 AM.jpeg" alt="UX/UI Design">
+                <h3>UX/UI Design Principles</h3>
+                <p>Create user-centered designs and intuitive interfaces.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('UX/UI Design Principles')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="web3" data-level="advanced">
+                <img src="./images/WhatsApp Image 2024-12-15 at 10.34.07 AM.jpeg" alt="Business Strategy">
+                <h3>Advanced Business Strategy</h3>
+                <p>Develop and implement successful business strategies.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Advanced Business Strategy')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="c++" data-level="advanced">
+                <img src="./images/C++.jpg" alt="Full-Stack Development">
+                <h3>Full-Stack Web Development</h3>
+                <p>Master both front-end and back-end web development.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Full-Stack Web Development')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="py" data-level="advanced">
+                <img src="./images/Python.jpg" alt="Big Data Analytics">
+                <h3>Big Data Analytics</h3>
+                <p>Learn to process and analyze large datasets.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Big Data Analytics')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="c" data-level="intermediate">
+                <img src="./images/C.jpg" alt="Social Media Marketing">
+                <h3>Social Media Marketing</h3>
+                <p>Create effective social media campaigns and strategies.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Social Media Marketing')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="app" data-level="beginner">
+                <img src="./images/AppDev.png" alt="Graphic Design Basics">
+                <h3>Graphic Design Fundamentals</h3>
+                <p>Learn the principles of visual communication and design.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Graphic Design Fundamentals')">Enroll Now</a>
+            </div>
+            <div class="course-card" data-category="full" data-level="beginner">
+                <img src="/placeholder.svg?height=200&width=300" alt="Graphic Design Basics">
+                <h3>Graphic Design Fundamentals</h3>
+                <p>Learn the principles of visual communication and design.</p>
+                <a href="#" class="btn" onclick="showEnrollForm('Graphic Design Fundamentals')">Enroll Now</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="enrollForm" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#f4f4f4; padding:2rem; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+        <h2>Enroll in <span id="courseName"></span></h2>
+        <div class="form-container">
+            <span id="cancel" style="cursor: pointer;"  type="button" class="btn" onclick="hideEnrollForm()">X</span>
+            <h1 style="padding: 5%;">Fill this Form for Further Contact</h1>
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Contact Number</label>
+                        <input type="tel" id="phone" placeholder="(000) 000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="example@example.com" required>
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Province</label>
+                        <input type="text" id="state" required>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="postal">Postal/Zip Code</label>
+                    <input type="text" id="postal" required>
+                </div>
+    
+                <div class="form-group" style="padding: 2% 0;">
+                    <label>Specific date to contact.</label>
+                    <div class="form-row">
+                        <input type="date" id="alternateDate">
+                        <!-- <input type="time" id="alternateTime"> -->
+                    </div>
+                </div>
+    
+                <div class="form-group" style="padding: 5%;">
+                    <label for="services">Choose The Domain Which You need our Service?</label>
+                    <select name="Domain" style="padding: 2%;background-color: rgb(255, 255, 255);border-radius: 10px;color:black">
+                        <option value="volvo">Web-Development</option>
+                        <option value="saab">App Development</option>
+                        <option value="mercedes">DSA</option>
+                        <option value="audi">Web 3</option>
+                    </select>
+                </div>
+    
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+    </div>
+
+    <script>
+        function showEnrollForm(courseName) {
+            document.getElementById('enrollForm').style.display = 'block';
+            document.getElementById('courseName').textContent = courseName;
+        }
+
+        function hideEnrollForm() {
+            document.getElementById('enrollForm').style.display = 'none';
+        }
+
+        function filterCourses() {
+            const category = document.getElementById('category').value;
+            const level = document.getElementById('level').value;
+            const courses = document.getElementsByClassName('course-card');
+
+            for (let course of courses) {
+                const courseCategory = course.getAttribute('data-category');
+                const courseLevel = course.getAttribute('data-level');
+
+                if ((category === 'all' || category === courseCategory) &&
+                    (level === 'all' || level === courseLevel)) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

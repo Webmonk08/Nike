@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internzo.Freelancing</title>
+    <link rel="shortcut icon" href="../images/image1.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+<body>
+
+    <nav class="flex">
+        <div class="logo">
+            <a href="#"><img src="../images/image-removebg-cropped.png" alt="Logo" href="#"></a>
+        </div>
+
+        <div id="nav-items" class="flex">
+            <a href="#"><span>Home</span></a>
+            <a href="#About"><span>About</span></a>
+            <a href="#services"><span>Our Services</span></a>
+            <a href="#projects"><span>Projects</span></a>
+            <a href="#contact"><span>Contact</span></a>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <p class="greeting">Hi There!</p>
+                <h1 class="title">We Are Developers!</h1>
+                <p class="subtitle">We make the complex simple.</p>
+                <a href="#contact" class="contact-btn">Contact Us</a>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <b>Email</b>
+                        info@internzo.com
+                    </div>
+                    <span></span>
+                    <div class="contact-item">
+                        <b>Linked-In</b>
+                        internzo
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../images/Hero.png" alt="Developer portrait">
+            </div>
+        </section>
+
+        <section id="About" class="section flex">
+            <div class="image-container">
+                <img src="../images/internzo-removebg-preview.png" alt="Profile" class="profile-image"  >
+            </div>
+            <div class="content">
+                <div class="label">Who We Are?</div>
+                <h1 class="title">We Are Internzo,We have a visual UX/UI Designers, Web Developers ,App Developers and
+                    more</h1>
+                <span class="description">Do you need a website or application tailored to your business? A team of our
+                    qualified
+                    freelancers ensures that you receive a product that best suits you. High tech steers me in the
+                    direction
+                    of the web, mobile apps, etc. Digital solutions have advanced far beyond mere websites, to software
+                    development, mobile apps, programming, and even more.
+                    <br>
+                    <br></span>
+            </div>
+        </section>
+
+
+        <section id="services" class="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>
+                    <h3>Web Development</h3>
+                    <p>Custom website development using the latest technologies and best practices.</p>
+                </li>
+                <li>
+                    <h3>App Development</h3>
+                    <p>custom App or Software for both Mobile and Systems with latest Technologies and best practices</p>
+                </li>
+                <li>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Building robust and scalable online stores to help your business thrive in the digital
+                        marketplace.
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <div class="projects" id="projects">
+            <main>
+                <section id="home" class="hero">
+                    <div class="container">
+                        <h2>Welcome to Our Project Showcase</h2>
+                        <p>Here you'll find a Some of Our latest and greatest projects</p>
+                    </div>
+                </section>
+
+                <section id="projects" class="projects">
+                    <div class="container">
+                        <h2>Our Projects</h2>
+                        <div class="filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="web">Web</button>
+                            <button class="filter-btn" data-filter="mobile">Mobile</button>
+                        </div>
+                        <div class="project-grid">
+                            <div class="project-card" data-category="web">
+                                <img src="../images/GB_STORES_LINK-2-removebg-preview (1).png"
+                                    style="height: 200px;background-color: rgb(0, 0, 0);" alt="Project 1">
+                                <h3>GB Stores</h3>
+                                <p>A brief description of project 1. This is a web development project.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="project-card" data-category="web">
+                                <img src="../images/SSV_TRADERS__1___1___1___1_-removebg-preview.png"
+                                    style="background-color:black" alt="Project 2">
+                                <h3>SSV Traders</h3>
+                                <p>A brief description of project 2. This is a mobile app project.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">javascript</span>
+                                </div>
+
+                            </div>
+                            <div class="project-card" data-category="mobile">
+                                <img src="../images/GK_KITCHEN-removebg-preview (1).png"
+                                    style="background-color: black;" alt="Project 3">
+                                <h3>Gk Kitchens</h3>
+                                <p>A brief description of project 3. This is a machine learning project.</p>
+                                <div class="tags">
+                                    <span class="tag">Kotlin</span>
+                                    <!-- <span class="tag"></span> -->
+                                </div>
+
+                            </div>
+                            <!-- Add more project cards as needed -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+
+
+        <section class="contact" id="contact">
+            <div class="contact-main">
+                <a class="h-line">
+                    <i class="ri-bard-line"></i><span>Contact!</span>
+                </a>
+                <h2>Want an Enquiry <span>Let's Talk</span></h2>
+                <div class="email">
+                    <p>E-mail:</p>
+                    <h6>info@internzo.com</h6>
+                </div>
+                <!-- <div class="phone">
+                <p>Whatsapp</p>
+                <h6>6374425046</h6>
+            </div> -->
+                <div class="social-icons">
+                    <a href="mailto:info@internzo.com"><i class="ri-mail-fill"></i></a>
+                    <a href="https://www.linkedin.com/company/internzo/"><i class="ri-linkedin-box-fill"></i></a>
+                    <a href="https://www.instagram.com/internzo_edu/profilecard/?igsh=MXYwYWttNmVveXJ5Zg=="><i
+                            class="ri-instagram-fill"></i></a>
+                </div>
+
+            </div>
+            <div class="form-container">
+                <h1 style="padding: 5%;">Fill this Form for Further Contact</h1>
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input type="tel" id="phone" placeholder="(000) 000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="example@example.com" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="postal">Postal/Zip Code</label>
+                        <input type="text" id="postal" required>
+                    </div>
+        
+                    <div class="form-group" style="padding: 2% 0;">
+                        <label>Specific date to contact.</label>
+                        <div class="form-row">
+                            <input type="date" id="alternateDate">
+                            <!-- <input type="time" id="alternateTime"> -->
+                        </div>
+                    </div>
+        
+                    <div class="form-group" style="padding: 5%;">
+                        <label for="services">Choose The Domain Which You need our Service?</label>
+                        <select name="Domain" style="padding: 2%;background-color: rgb(255, 255, 255);border-radius: 10px;color:black">
+                            <option value="volvo">Web-Development</option>
+                            <option value="saab">App-Development</option>
+                            <option value="mercedes">Marketing Services</option>
+                            <!-- <option value="audi"></option> -->
+                        </select>
+                    </div>
+        
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </section>
+        <div class="footer">
+            <div class="copyright">
+                <p>@copyright 2024 internzo All Rights Reserved.<br>
+                    developed by <a target="_blank" href="https://www.linkedin.com/in/chris-robert-yeslin-3993a5291/">Chris
+                        Robert</a> and <a href="">Nikesh</a> </p>
+    
+            </div>
+            <a href="#home" class="scroll-top"><i class="ri-arrow-up-s-line"></i></a>
+        </div>
+    </div>
+
+    <script src="./script.js" type="module"></script>
+</body>
+
+</html>
